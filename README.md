@@ -21,7 +21,24 @@ npm test
 
 ## Build and publish
 
-`npm run build` creates a static `dist/` folder suitable for GitHub Pages or another static host, including subdirectory hosting. Publishing is a separate step; no automatic deployment workflow is enabled. Google Fonts is the only external presentation dependency and has system-font fallbacks.
+The storefront source is published on `main`. `npm run build` creates the static `dist/` folder to deploy to a storefront-compatible host. Google Fonts is the only external presentation dependency and has system-font fallbacks.
+
+GitHub stores the source code; a hosting provider serves the website and connects its domain. Do not use GitHub Pages for the commercial storefront: [GitHub Pages terms](https://docs.github.com/en/site-policy/github-terms/github-terms-for-additional-products-and-features#pages) exclude e-commerce hosting.
+
+For a Cloudflare Pages deployment, [import this GitHub repository](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/) and use:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Framework preset | None |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | Repository root |
+| Node.js version | 20 or later |
+
+After deployment succeeds, open the project’s **Custom domains → Set up a domain** and follow the provider’s DNS instructions. [Custom-domain guide](https://developers.cloudflare.com/pages/configuration/custom-domains/).
+
+No live hosting deployment or custom domain has been configured by this repository publication. Payment and live shipping setup remain separate.
 
 ## Catalog and photographs
 
