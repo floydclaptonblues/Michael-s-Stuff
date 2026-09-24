@@ -21,9 +21,9 @@ npm test
 
 ## Build and publish
 
-The storefront source is published on `main`. `npm run build` creates the static `dist/` folder to deploy to a storefront-compatible host. Google Fonts is the only external presentation dependency and has system-font fallbacks.
+The storefront source is published on `main`. The current site is a non-transactional design demo: checkout and live payments are disabled. `npm run build` creates the static `dist/` folder to deploy to a storefront-compatible host. Google Fonts is the only external presentation dependency and has system-font fallbacks.
 
-GitHub stores the source code; a hosting provider serves the website and connects its domain. Do not use GitHub Pages for the commercial storefront: [GitHub Pages terms](https://docs.github.com/en/site-policy/github-terms/github-terms-for-additional-products-and-features#pages) exclude e-commerce hosting.
+The current project demo is published using GitHub Pages from `main` and `/ (root)`, with `.nojekyll` preserving static files. Add a preview domain under repository **Settings → Pages → Custom domain**. Before converting the demo into a live commercial storefront, move its hosting to a suitable provider: [GitHub Pages terms](https://docs.github.com/en/site-policy/github-terms/github-terms-for-additional-products-and-features#pages) exclude e-commerce hosting.
 
 For a Cloudflare Pages deployment, [import this GitHub repository](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/) and use:
 
@@ -38,7 +38,7 @@ For a Cloudflare Pages deployment, [import this GitHub repository](https://devel
 
 After deployment succeeds, open the project’s **Custom domains → Set up a domain** and follow the provider’s DNS instructions. [Custom-domain guide](https://developers.cloudflare.com/pages/configuration/custom-domains/).
 
-No live hosting deployment or custom domain has been configured by this repository publication. Payment and live shipping setup remain separate.
+The demo uses GitHub Pages; a custom domain has not yet been configured. Payment and live shipping setup remain separate. The Cloudflare configuration above is an option for the later commercial version.
 
 ## Catalog and photographs
 
