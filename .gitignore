@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+
+# Internal seller-review research stays local.
+INVENTORY-REVIEW.md
+PRICING-REVIEW.json
+pricing-evidence.json
+pricing-search-evidence.json
+pricing-additional-evidence.json
