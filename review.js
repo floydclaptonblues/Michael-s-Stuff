@@ -3,7 +3,7 @@ const catalog=[...window.CATALOG].sort((a,b)=>a.title.localeCompare(b.title)||a.
 const $=id=>document.getElementById(id), key='michaels-stuff-owner-review-v1';let choices={},page=0;const size=30;
 function message(text){$('save-status').textContent=text;}
 try{const saved=localStorage.getItem(key);if(saved)choices=importReview(JSON.parse(saved),catalog).choices;message('Ready. Choices save on this browser as you go.');}catch{message('Saved progress could not be loaded. Download a JSON backup before leaving this page.');}
-function save(){try{localStorage.setItem(key,JSON.stringify(exportReview(catalog,choices)));message('Saved in this browser. Open My lists to download or print your decisions.');return true;}catch{message('Browser storage is unavailable or full. Download JSON now to keep your choices.');return false;}}
+function save(){try{localStorage.setItem(key,JSON.stringify(exportReview(catalog,choices)));message('Saved in this browser. Click Download List Here to download or print your decisions.');return true;}catch{message('Browser storage is unavailable or full. Download JSON now to keep your choices.');return false;}}
 function el(tag,text){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node;}
 for(const name of [...new Set(catalog.map(p=>p.platform))].sort()){$('platform').add(new Option(name,name));}
 function render(){
@@ -31,7 +31,7 @@ window.addEventListener('beforeprint',printReport);$('print').onclick=()=>{print
 
 function updateLists(){
  const data=exportReview(catalog,choices),sorted=catalog.length-data.counts.Unreviewed;
- $('open-lists').textContent=`My lists · ${sorted} sorted`;
+ $('open-lists').textContent='Download List Here';
  $('list-progress').textContent=`${sorted} of ${catalog.length} sorted. ${data.counts.Unreviewed} still need a decision. Downloads include undecided items separately.`;
  const root=$('list-groups');root.replaceChildren();
  for(const status of ['Keep','Sell','SPG','Unreviewed']){const group=el('details');group.open=status!=='Unreviewed';group.append(el('summary',`${status} · ${data.counts[status]} items`));if(!data.counts[status])group.append(el('p','No items here yet.'));for(const item of data.items.filter(i=>i.status===status))group.append(el('p',`${item.title} — ${item.platform}`));root.append(group);}
